@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soyo.kurosaki.dao.AlbumDao">
+
+    <!--新增相册-->
+    <select id="createAlbum" parameterType="Album">
+        INSERT INTO album (name,permission,account) VALUE (#{name},#{permission},#{account})
+    </select>
+
+    <!--根据账号查询相册-->
+    <select id="selectByaccount" parameterType="String" resultType="Album">
+        SELECT id,name,permission FROM album WHERE account = #{account}
+    </select>
+
+    <!--新增照片-->
+    <select id="insertPhoto" parameterType="Photo">
+        INSERT INTO photo (name,path,album_id) VALUE (#{name},#{path},#{albumId})
+    </select>
+
+</mapper>
+    

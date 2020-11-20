@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>相册</title>
+    <link rel="stylesheet" href="/static/layui-v2.5.6/layui/css/layui.css">
+    <style>
+        .photoDiv{
+            margin: 10px;
+        }
+        .photpSpan{
+            color: #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+<div id="albumBody">
+    <!--<div class="layui-col-xs6">-->
+        <!--<div class="photoDiv">-->
+            <!--<div class="album firstDiv" style="text-align: center;background-color: #aaaaaa;">-->
+                <!--<i class="layui-icon layui-icon-picture"></i>新建相册-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="layui-col-xs6">-->
+        <!--<div class="photoDiv">-->
+            <!--<img class="album" src="">-->
+            <!--<p>相册名称</p>-->
+            <!--<span class="photpSpan">张数</span><span class="photpSpan">权限</span>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+
+<!--上传相关-->
+<button id="upload" style="display: none;">上传</button>
+<input id="fileId" style="display: none;">
+
+<script src="/static/jquery/jquery-1.9.1.min.js"></script>
+<script src="/static/layui-v2.5.6/layui/layui.js"></script>
+<script src="/static/js/album.js"></script>
+</body>
+
+<!--相册创建弹窗-->
+<div id="createAlbumDiv" style="display: none">
+    <form class="layui-form" action="" style="margin-left: 20px;margin-right: 20px;margin-top: 15px;">
+        <div class="layui-form-item">
+            <select name="permission">
+                <option value="0">公开</option>
+                <option value="1">私密</option>
+            </select>
+        </div>
+        <div class="layui-form-item">
+            <input type="text" name="name" autocomplete="off" placeholder="请输入相册名称"
+                   lay-verify="required" lay-reqtext="请输入相册名称" class="layui-input">
+        </div>
+        <div class="layui-form-item" style="text-align: right">
+            <button type="submit" class="layui-btn" lay-submit="" lay-filter="create">创建</button>
+        </div>
+    </form>
+</div>
+
+<!--照片上传弹窗-->
+<div id="insertPhotoDiv" style="display: none">
+    <form class="layui-form" action="" style="margin-left: 20px;margin-right: 20px;margin-top: 15px;">
+        <div class="layui-form-item">
+            <select name="permission" id="permission">
+                <option value="0">公开</option>
+                <option value="1">私密</option>
+            </select>
+        </div>
+        <div class="layui-form-item">
+            <textarea name="remark" id="remark" placeholder="说点什么吧" class="layui-textarea"></textarea>
+        </div>
+        <div class="layui-form-item">
+            <a href="javascript:;" id="testList">选择附件</a>
+            <div class="layui-upload-list" id="uploadTable" style="display: none;">
+                <table class="layui-table">
+                    <thead>
+                    <tr><th><b>文件名</b></th>
+                        <th><b>状态</b></th>
+                        <th><b>操作</b></th>
+                    </tr>
+                    </thead>
+                    <tbody id="demoList"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="layui-form-item" style="text-align: right">
+            <button type="submit" class="layui-btn" lay-submit="" lay-filter="insertPhoto">上传</button>
+        </div>
+    </form>
+</div>
+
+</html>

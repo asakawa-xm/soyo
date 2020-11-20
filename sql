@@ -1,0 +1,30 @@
+
+-- 创建用户表
+CREATE TABLE IF NOT EXISTS `user`(
+   `id` INT UNSIGNED AUTO_INCREMENT,
+   `name` VARCHAR(20) NOT NULL,
+   `account` VARCHAR(50) NOT NULL,
+   `password` VARCHAR(50) NOT NULL,
+   `sex` CHAR(1) COMMENT '性别。0：女，1：男',
+   PRIMARY KEY ( `id` )
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+-- 创建相册表
+CREATE TABLE IF NOT EXISTS `album`(
+   `id` INT UNSIGNED AUTO_INCREMENT,
+   `name` VARCHAR(50) NOT NULL,
+   `permission` VARCHAR(1) NOT NULL COMMENT '权限。0：公开，1：私密',
+   `account` VARCHAR(50) NOT NULL,
+   PRIMARY KEY ( `id` )
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+-- 创建照片表
+CREATE TABLE IF NOT EXISTS `photo`(
+   `id` INT UNSIGNED AUTO_INCREMENT,
+   `name` VARCHAR(50) NOT NULL,
+   `path` VARCHAR(50) NOT NULL,
+   `album_id` INT UNSIGNED,
+   PRIMARY KEY ( `id` ),
+   FOREIGN KEY (`album_id`) REFERENCES `album`(`id`)
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
+
